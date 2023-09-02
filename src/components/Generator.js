@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import imagePaths from "./imagePaths";
+import "./Generator.css";
 
 const Generator = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -9,11 +10,9 @@ const Generator = () => {
   };
 
   return (
-    <div className="flex p-10 bg-black flex-col w-max h-screen justify-center ">
-      <h1 className="text-9xl opacity-60 absolute top-24 -rotate-45 -z-20">
-        IMG GENERATOR
-      </h1>
-      <div className="flex  flex-wrap  gap-7 relative ">
+    <div className=" relative flex p-10 bg-black flex-col w-fit h-screen justify-center ">
+      
+      <div className="flex maindiv gap-7  p-4 ">
         {imagePaths.map((path, index) => (
           <img
             key={index}
@@ -24,15 +23,15 @@ const Generator = () => {
                 ? 600
                 : 300
             }
-            
             height={
               [0, 1, 7, 8, 9].includes(index) && selectedImage === index
                 ? 400
                 : 400
             }
             onMouseOver={() => handleClick(index)}
+            
             style={{
-              opacity: selectedImage === index ? 1 : 0.1,
+              opacity: selectedImage === index ? 1 : 0.2,
             }}
             className="z-50 rounded-xl object-cover"
           />
