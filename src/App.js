@@ -2,7 +2,7 @@ import Generator from "./components/Generator";
 
 function App() {
   return (
-  <div >
+  <div className="overflow-x-hidden">
       <Generator />
     </div>
   );

@@ -1,6 +1,6 @@
 
 .maindiv {
-  animation: 5s slide infinite linear;
+  animation: 25s slide infinite linear;
 }
 
 @keyframes slide {
@@ -8,6 +8,6 @@
     transform: translateX(0);
   }
   to {
-    transform: translateX(-100);
+    transform: translateX(-300%);
   }
 }
