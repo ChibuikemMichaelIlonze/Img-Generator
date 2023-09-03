@@ -10,8 +10,7 @@ const Generator = () => {
     setSelectedImage(index);
     setAnimation(false);
   };
-  const handleClickleave = (index) => {
-    setSelectedImage(index);
+  const handleClickleave = () => {
     setAnimation(true);
   };
 
@@ -31,22 +30,22 @@ const Generator = () => {
             width={200}
             height={300}
             onMouseEnter={() => handleClick(index)}
-            onMouseLeave={() => handleClickleave(index)}
+            onMouseLeave={() => handleClickleave()}
             style={
               animation === false
                 ? {
                     opacity:
                       selectedImage === index
-                        ? 1
+                        ? 0.9
                         : selectedImage === index - 1
-                        ? 0.3
+                        ? 0.4
                         : selectedImage === index - 2
-                        ? 0.2
-                        : selectedImage === index + 1
                         ? 0.3
+                        : selectedImage === index + 1
+                        ? 0.4
                         : selectedImage === index + 2
-                        ? 0.2
-                        : 0.1,
+                        ? 0.3
+                        : 0.2,
                     transform:
                       selectedImage === index
                         ? "scale(1.3)"
@@ -73,31 +72,9 @@ const Generator = () => {
                         : "",
                   }
                 : {
-                    opacity:
-                      selectedImage === index
-                        ? 1
-                        : selectedImage === index - 1
-                        ? 0.3
-                        : selectedImage === index - 2
-                        ? 0.2
-                        : selectedImage === index + 1
-                        ? 0.3
-                        : selectedImage === index + 2
-                        ? 0.2
-                        : 0.1,
-                    transform:
-                      selectedImage === index
-                        ? "scale(1.3)"
-                        : selectedImage === index - 1
-                        ? "scale(1.2)"
-                        : selectedImage === index - 2
-                        ? "scale(1.1)"
-                        : selectedImage === index + 1
-                        ? "scale(1.2)"
-                        : selectedImage === index + 2
-                        ? "scale(1.1)"
-                        : "scale(1)",
-                    transition: "transform 0.7s ease-in-out", // Transition when animation is false
+                    opacity: 0.2,
+                    transform: "scale(1)",
+                    transition: "transform 0.7s ease-in-out",
                   }
             }
             className="z-50 rounded-xl object-cover"
