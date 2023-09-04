@@ -1,4 +1,3 @@
-
 .maindiv {
   animation: 25s slide infinite linear;
 }
@@ -10,4 +9,17 @@
   to {
     transform: translateX(-300%);
   }
+}
+.mainScale {
+  transition-duration: 3s;
+}
+
+@keyframes slideaway {
+  from { display: flex; }
+  to { transform: translateY(100%);}
+}
+
+.hide {
+  animation: slideaway 5s;
+  display: none;
 }
