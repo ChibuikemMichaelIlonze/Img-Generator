@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import imagePaths from "./imagePaths";
+import imagePaths_Chinelo from "./imagePaths_Chinelo";
 import "./Generator.css";
 
 const Generator = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [animation, setAnimation] = useState(true);
   const [scale, setScale] = useState(false);
+  const [selection, setSelection] = useState(1);
 
   const handleClick = (index) => {
     setSelectedImage(index);
@@ -17,41 +19,24 @@ const Generator = () => {
   const handleScale = () => {
     setScale(!scale);
   };
+  const handleClickedButton = (buttonId) => {
+    setSelection(buttonId);
+    setScale(false);
+  };
+  const selectionCollection = selection === 1 ? imagePaths : imagePaths_Chinelo;
 
   const duplicatedImagePaths = [];
   for (let i = 0; i < 3; i++) {
-    duplicatedImagePaths.push(...imagePaths);
+    duplicatedImagePaths.push(...selectionCollection);
   }
 
   return (
-    <div className={` relative flex  bg-black flex-col w-fit  h-screen`}>
-      <div className="text-center my-14">
-        <button
-          onClick={() => handleScale()}
-          className=" w-fit h-fit p-2 whitespace-nowrap text-white border-2 border-white rounded-xl"
-        >
-          Chose Picture
-        </button>
-      </div>
-
-      <div
-        className={` flex flex-col  w-screen items-center  text-white ${
-          scale
-            ? " h-screen my-10 opacity-100"
-            : "h-0 opacity-0 overflow-hidden duration-[2s]"
-        } duration-[4s] ease-in-out`}
-      >
-        <ul className={`gap-7 flex text-center flex-row  text-3xl`}>
-          <li>Chukwunonso</li>
-          <li>Chioma</li>
-          <li>Chibuike</li>
-          <li>Chinelo</li>
-        </ul>
-      </div>
-
+    <div className={` relative flex justify-around items-center  bg-black flex-col w-screen  h-screen`}>
       <div
         className={` ${
-          scale ? "h-20 overflow-hidden opacity-0" : "h-96 opacity-100  duration-[6s] ease-in-out"
+          scale
+            ? "h-20 overflow-hidden opacity-0"
+            : "h-96 opacity-100  duration-[6s] ease-in-out"
         } items-center flex flex-col duration-[4s] ease-in-out `}
       >
         <div className={`${animation ? "maindiv" : ""} flex  gap-7  p-4 `}>
@@ -114,6 +99,39 @@ const Generator = () => {
             />
           ))}
         </div>
+      </div>
+      <div
+        className={` flex flex-col  justify-end w-screen  text-white ${
+          scale
+            ? " h-screen my-10 opacity-100"
+            : "h-0 opacity-0 overflow-hidden duration-[2s]"
+        } duration-[4s] ease-in-out`}
+      >
+        <ul className={`justify-around flex   text-3xl`}>
+          <button
+            className="w-fit p-2 h-fit border-2 border-white "
+            onClick={() => handleClickedButton(1)}
+          >
+            {" "}
+            Chukwunonso
+          </button>
+          <button
+            className="w-fit p-2 h-fit border-2 border-white "
+            onClick={() => handleClickedButton(2)}
+          >
+            Chioma{" "}
+          </button>
+        </ul>
+      </div>
+      <div
+        className={`${scale ? "h-0 overflow-hidden opacity-0  " : ""} duration-[4s] ease-in-out  my-14`}
+      >
+        <button
+          onClick={() => handleScale()}
+          className=" w-fit h-fit p-2 whitespace-nowrap text-white border-2 border-white rounded-xl"
+        >
+          Chose Picture
+        </button>
       </div>
     </div>
   );
