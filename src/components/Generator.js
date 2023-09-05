@@ -57,7 +57,7 @@ const Generator = () => {
                     ? "auto"
                     : "200px"
                   : "200px",
-                height: "400px",
+                height: "350px",
 
                 ...(animation === false
                   ? selectedImage === index
